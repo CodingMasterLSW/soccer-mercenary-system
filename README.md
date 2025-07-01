@@ -1,3 +1,5 @@
+[배포 링크](https://soccer-mercenary-alert.lovable.app/)
+
 ---
 
 ## ⚽ 조기축구 용병 매칭 서비스 README
