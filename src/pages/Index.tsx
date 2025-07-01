@@ -131,10 +131,13 @@ const Index = () => {
                 <span className="text-sm">🌡️ 매너온도: 38.2°C</span>
               </div>
               <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
-                  용병 등록 완료
-                </Badge>
+                <span className="text-sm">⚽ Level 3 (축구 기본기 있음)</span>
               </div>
+            </div>
+            <div className="mt-2">
+              <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
+                용병 등록 완료
+              </Badge>
             </div>
           </CardContent>
         </Card>
@@ -192,8 +195,8 @@ const Index = () => {
                   <span className="font-semibold">12경기</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">평점</span>
-                  <span className="font-semibold text-emerald-600">4.8⭐</span>
+                  <span className="text-gray-600">Level</span>
+                  <span className="font-semibold text-emerald-600">Level 3⚽</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">매너온도</span>

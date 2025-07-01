@@ -95,7 +95,7 @@ const RecruitManager = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 text-emerald-500" />
-                <span className="text-sm">팀 평점: 4.6⭐</span>
+                <span className="text-sm">팀 Level: 4 (아마추어 경기 자주 함)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Badge className="bg-emerald-100 text-emerald-700">

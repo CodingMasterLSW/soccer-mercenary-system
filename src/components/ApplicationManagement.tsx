@@ -13,7 +13,7 @@ interface Applicant {
   position: string;
   mannerTemperature: number;
   totalMatches: number;
-  rating: number;
+  level: number;
   location: string;
   appliedAt: string;
   status: 'pending' | 'approved' | 'rejected';
@@ -33,7 +33,7 @@ const ApplicationManagement: React.FC<ApplicationManagementProps> = ({ onBack, r
       position: 'MF/FW',
       mannerTemperature: 38.2,
       totalMatches: 12,
-      rating: 4.8,
+      level: 3,
       location: '강남구',
       appliedAt: '2025-07-01 14:30',
       status: 'pending'
@@ -45,7 +45,7 @@ const ApplicationManagement: React.FC<ApplicationManagementProps> = ({ onBack, r
       position: 'DF',
       mannerTemperature: 39.1,
       totalMatches: 28,
-      rating: 4.9,
+      level: 4,
       location: '서초구',
       appliedAt: '2025-07-01 15:45',
       status: 'pending'
@@ -57,7 +57,7 @@ const ApplicationManagement: React.FC<ApplicationManagementProps> = ({ onBack, r
       position: 'GK',
       mannerTemperature: 35.8,
       totalMatches: 8,
-      rating: 4.2,
+      level: 2,
       location: '강남구',
       appliedAt: '2025-07-01 16:20',
       status: 'pending'
@@ -105,6 +105,28 @@ const ApplicationManagement: React.FC<ApplicationManagementProps> = ({ onBack, r
     if (temp >= 37.0) return '좋음';
     if (temp >= 36.5) return '보통';
     return '주의';
+  };
+
+  const getLevelDescription = (level: number) => {
+    switch (level) {
+      case 1: return '축구 기본기 없음';
+      case 2: return '축구 기본기 조금 있음';
+      case 3: return '축구 기본기 있음';
+      case 4: return '아마추어 경기 자주 함';
+      case 5: return '프로/세미프로';
+      default: return '미정';
+    }
+  };
+
+  const getLevelColor = (level: number) => {
+    switch (level) {
+      case 1: return 'text-gray-600 bg-gray-50';
+      case 2: return 'text-blue-600 bg-blue-50';
+      case 3: return 'text-green-600 bg-green-50';
+      case 4: return 'text-orange-600 bg-orange-50';
+      case 5: return 'text-purple-600 bg-purple-50';
+      default: return 'text-gray-600 bg-gray-50';
+    }
   };
 
   const pendingCount = applicants.filter(app => app.status === 'pending').length;
@@ -190,13 +212,15 @@ const ApplicationManagement: React.FC<ApplicationManagementProps> = ({ onBack, r
                         >
                           🌡️ {applicant.mannerTemperature}°C ({getMannerLevel(applicant.mannerTemperature)})
                         </Badge>
+                        <Badge 
+                          variant="outline" 
+                          className={`${getLevelColor(applicant.level)} border-0`}
+                        >
+                          ⚽ Level {applicant.level} ({getLevelDescription(applicant.level)})
+                        </Badge>
                       </div>
                       
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600">
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 text-yellow-500" />
-                          <span>평점 {applicant.rating}</span>
-                        </div>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm text-gray-600">
                         <div className="flex items-center gap-1">
                           <Users className="w-4 h-4 text-blue-500" />
                           <span>{applicant.totalMatches}경기</span>

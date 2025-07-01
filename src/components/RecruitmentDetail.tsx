@@ -179,8 +179,8 @@ const RecruitmentDetail: React.FC<RecruitmentDetailProps> = ({
                     <span className="font-medium">{data.teamName}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">평점</span>
-                    <span className="font-medium text-yellow-600">4.7 ⭐</span>
+                    <span className="text-gray-600">팀 Level</span>
+                    <span className="font-medium text-emerald-600">Level 4 ⚽</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">매치 횟수</span>
