@@ -1,73 +1,42 @@
-# Welcome to your Lovable project
+🏃‍♂️ 조기축구 용병 매칭 서비스 README
+이 문서는 조기축구 매니아 **이성우 님(26세)**의 입장에서, 축구 용병 매칭 서비스의 핵심 페르소나, 사용자 스토리 및 구현 범위를 설명합니다. 본 프로젝트는 실제 연동 없이 목업(Mocking) 데이터로 구현된 프로토타입 수준입니다.
 
-## Project info
+👤 페르소나: 조기축구 매니아 - 이성우 (26세)
+라이프스타일: 매일 출퇴근하며, 퇴근 후나 주말에 조기축구를 즐겨 합니다.
 
-**URL**: https://lovable.dev/projects/bbf748c3-0745-4ba2-ade4-a057255523ac
+목표: 근처 조기축구 용병 게시글을 확인하고, 원하는 경기에 용병으로 참여하는 것입니다.
 
-## How can I edit this code?
+📝 사용자 스토리 및 시나리오
+상황: 퇴근 후, 축구하고 싶지만 함께 뛸 사람이 없어 용병을 구하는 팀이 없는지 찾고 있는 이성우 님. 마침 그때, 근처 축구장에서 용병을 구한다는 게시글 알림이 도착합니다.
 
-There are several ways of editing your application.
+사용자 시나리오:
 
-**Use Lovable**
+용병 등록: 이성우 님은 서비스에 용병으로 미리 등록되어 있습니다.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bbf748c3-0745-4ba2-ade4-a057255523ac) and start prompting.
+모집 알림 수신: 축구팀 모집자가 용병 구인글을 작성하면, 등록된 이성우 님에게 알림이 발송됩니다.
 
-Changes made via Lovable will be committed automatically to this repo.
+알림 예시: "⚽ 새로운 용병 모집! [지역명] [경기장명]에서 [날짜] [시간]에 용병을 구합니다. 지금 바로 확인해보세요!"
 
-**Use your preferred IDE**
+알림 확인 및 신청: 이성우 님은 알림을 보고 해당 게시글로 이동하여 내용을 확인한 후, 용병 신청을 완료합니다.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+신청 완료 메시지 예시: "용병 신청이 완료되었습니다! 팀 모집자가 곧 연락드릴 예정입니다."
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+경기 참여: 이성우 님은 용병으로 경기에 참여하여 축구를 즐기고, 모집자는 부족한 인원을 채워 경기를 원활히 진행할 수 있습니다.
 
-Follow these steps:
+✅ 인수 조건 (Acceptance Criteria)
+Given: 사용자가 해당 웹사이트에 접속했을 때
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+When: 축구 용병 모집 공고글을 확인하고 지원할 수 있어야 한다.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Then: 참여자의 지원 정보가 모집자에게 전달되어야 한다.
 
-# Step 3: Install the necessary dependencies.
-npm i
+🛠️ 구현 범위 (프로토타입)
+본 프로토타입은 실제 데이터 연동 없이 목업(Mocking) 데이터를 활용하며, 다음과 같은 UI/UX 및 기본적인 게시글 지원 흐름을 보여주는 것을 목표로 합니다.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+알림 기능: 새로운 용병 모집 게시글 등록 시 사용자에게 알림이 발생합니다.
 
-**Edit a file directly in GitHub**
+게시글 상세 페이지: 모집 팀 정보, 경기 날짜/시간, 장소, 모집 인원 등의 정보를 확인할 수 있습니다.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+용병 신청 기능: 게시글 내 "용병 신청하기" 버튼을 클릭하여 지원할 수 있습니다.
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/bbf748c3-0745-4ba2-ade4-a057255523ac) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+신청 완료 피드백: 신청 완료 시 사용자에게 성공 메시지를 보여줍니다.
