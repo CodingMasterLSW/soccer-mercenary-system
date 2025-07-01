@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Bell, MapPin, Clock, Users, Calendar } from 'lucide-react';
+import { Bell, MapPin, Clock, Users, Calendar, UserCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +11,7 @@ import RecruitmentDetail from '@/components/RecruitmentDetail';
 const Index = () => {
   const [showNotification, setShowNotification] = useState(true);
   const [currentView, setCurrentView] = useState('home');
+  const [userType, setUserType] = useState<'player' | 'manager'>('player');
   const [applicationCount, setApplicationCount] = useState(0);
   const { toast } = useToast();
 
@@ -46,6 +47,10 @@ const Index = () => {
     setCurrentView('home');
   };
 
+  const handleSwitchToManager = () => {
+    window.location.href = '/recruit-manager';
+  };
+
   if (currentView === 'detail') {
     return (
       <RecruitmentDetail 
@@ -75,6 +80,30 @@ const Index = () => {
           <p className="text-lg text-gray-600">퇴근 후 축구를 즐기고 싶으신가요?</p>
         </div>
 
+        {/* User Type Switch */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-white rounded-lg p-1 border-2 border-emerald-200">
+            <Button
+              variant={userType === 'player' ? 'default' : 'ghost'}
+              size="sm"
+              onClick={() => setUserType('player')}
+              className={userType === 'player' ? 'bg-emerald-500 hover:bg-emerald-600' : ''}
+            >
+              <Users className="w-4 h-4 mr-2" />
+              용병 찾기
+            </Button>
+            <Button
+              variant={userType === 'manager' ? 'default' : 'ghost'}
+              size="sm"
+              onClick={handleSwitchToManager}
+              className={userType === 'manager' ? 'bg-emerald-500 hover:bg-emerald-600' : ''}
+            >
+              <UserCheck className="w-4 h-4 mr-2" />
+              용병 모집
+            </Button>
+          </div>
+        </div>
+
         {/* User Profile Section */}
         <Card className="mb-8 border-2 border-emerald-200 shadow-lg">
           <CardHeader className="bg-emerald-50">
@@ -89,7 +118,7 @@ const Index = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="pt-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-emerald-500" />
                 <span className="text-sm">활동 지역: 강남구</span>
@@ -97,6 +126,9 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-emerald-500" />
                 <span className="text-sm">포지션: MF/FW</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm">🌡️ 매너온도: 38.2°C</span>
               </div>
               <div className="flex items-center gap-2">
                 <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
@@ -163,6 +195,10 @@ const Index = () => {
                   <span className="text-gray-600">평점</span>
                   <span className="font-semibold text-emerald-600">4.8⭐</span>
                 </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">매너온도</span>
+                  <span className="font-semibold text-blue-600">38.2°C</span>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -179,11 +215,16 @@ const Index = () => {
             >
               ⚽ 용병 모집글 보기
             </Button>
-            <Button size="lg" variant="outline" className="px-8">
-              📍 내 주변 경기장
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="px-8"
+              onClick={handleSwitchToManager}
+            >
+              👥 용병 모집하기
             </Button>
             <Button size="lg" variant="outline" className="px-8">
-              👥 팀 찾기
+              📍 내 주변 경기장
             </Button>
           </div>
         </div>
